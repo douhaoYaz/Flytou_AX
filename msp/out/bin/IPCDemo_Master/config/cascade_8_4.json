@@ -1,0 +1,131 @@
+{
+    "project": "AX620",
+    "version": "1.0",
+
+    "modules": [{
+            "type": "camera",
+            "instance": [
+                {
+                    "id": 0,
+                    "frame_rate": 30,
+                    "sns_type": "2: OS08a20",
+                    "sns_type": 2,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 1
+                },
+                {
+                    "id": 1,
+                    "frame_rate": 30,
+                    "sns_type": "0: OS04A10",
+                    "sns_type": 0,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 1
+                }
+            ]
+        },
+        {
+            "type": "venc",
+            "encoder": "h264",
+            "instance": [{
+                    "id": 0,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 20000,
+                    "fps": 30,
+                    "gop": 30
+                },
+                {
+                    "id": 1,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 10000,
+                    "fps": 30,
+                    "gop": 30
+                },
+                {
+                    "id": 2,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 5000,
+                    "fps": 30,
+                    "gop": 30
+                },
+                {
+                    "id": 3,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 20000,
+                    "fps": 30,
+                    "gop": 30
+                },
+                {
+                    "id": 4,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 10000,
+                    "fps": 30,
+                    "gop": 30
+                },
+                {
+                    "id": 5,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 0,
+                        "max_qp": 51,
+                        "min_iqp": 0,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 5000,
+                    "fps": 30,
+                    "gop": 30
+                }
+            ]
+        },
+        {
+            "type": "jenc",
+            "instance": [{
+                "id": 0,
+                "input_width": 1280,
+                "input_height": 720,
+                "output_width": 1280,
+                "output_height": 720,
+                "qplevel": 90
+            }]
+        }
+    ]
+}

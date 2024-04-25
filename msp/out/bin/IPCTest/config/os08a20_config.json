@@ -1,0 +1,109 @@
+{
+    "project": "AX620",
+    "version": "1.0",
+
+    "modules": [{
+            "type": "camera",
+            "instance": [{
+                "id": 0,
+                "frame_rate": 30,
+                "sns_type": "3: OS08A20",
+                "sns_type": 3,
+                "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                "sns_mode": 1,
+                "run_mode": "0: NPU; 1: None NPU;",
+                "run_mode": 0,
+                "tuning_ctrl": "0: disable; 1: enable",
+                "tuning_ctrl": 1,
+                "tuning_port": 8082,
+                "pre_output": "0: AX_PRE_OUTPUT_FULL_MAIN; 1: AX_PRE_OUTPUT_LITE_MAIN;",              
+                "pre_output": 0,
+                "sdr_pipe_src": "0: ONLINE; 1: OFFLINE;",
+                "sdr_pipe_src": 0,
+                "hdr_pipe_src": "0: ONLINE; 1: OFFLINE;",
+                "hdr_pipe_src": 0
+            }]
+        },
+        {
+            "type": "venc",
+            "encoder": "h264",
+            "instance": [{
+                    "id": 0,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 8192,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 1,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 4096,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 2,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 512,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 3,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 512,
+                    "fps": 30,
+                    "gop": 60
+                }
+            ]
+        },
+        {
+            "type": "jenc",
+            "instance": [{
+                    "id": 0,
+                    "qplevel": 90
+                },
+                {
+                    "id": 1,
+                    "qplevel": 70
+                }
+            ]
+        }
+    ]
+}

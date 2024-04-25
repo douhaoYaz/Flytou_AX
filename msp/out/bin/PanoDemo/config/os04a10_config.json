@@ -1,0 +1,176 @@
+{
+    "project": "AX620",
+    "version": "1.0",
+
+    "modules": [{
+            "type": "camera",
+            "instance": [{
+                    "id": 0,
+                    "width": 2688,
+                    "height": 1520,
+                    "frame_rate": 25,
+                    "sns_type": "0: OS04A10",
+                    "sns_type": 0,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 0,
+                    "tuning": "enable",
+                    "tuning_port": 8082,
+                    "channel": [{
+                     "width": 2688,
+                     "height": 1520
+                    }]
+                },
+                {
+                    "id": 1,
+                    "width": 2688,
+                    "height": 1520,
+                    "frame_rate": 25,
+                    "sns_type": "0: OS04A10",
+                    "sns_type": 0,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 0,
+                    "tuning": "disable",
+                    "tuning_port": 8889,
+                    "channel": [{
+                        "width": 2688,
+                        "height": 1520
+                    }]
+                }
+            ]
+        },
+        {
+            "type": "venc",
+            "encoder": "h264",
+            "instance": [{
+                    "id": 0,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 4096,
+                    "fps": 25,
+                    "gop": 50
+                }
+            ]
+        },
+    {
+      "type": "gdc",
+      "mode_select": 0,
+      "params": [
+        {
+            "dewarp-left": {
+             "width": 1728,
+             "height": 1056
+            },
+            "dewarp-right": {
+             "width": 2064,
+             "height": 1056
+            },
+            "canvas": {
+             "width": 3424,
+             "height": 1056
+            },
+            "overlap": {
+             "width": 368,
+             "height": 1056
+            },
+            "none-overlap": {
+             "width": 1696,
+             "height": 1056
+            },
+            "map-file": {
+             "left": "./res/map0_1728x1056_overlap_368x1056.txt",
+             "right": "./res/map1_2064x1056_overlap_368x1056.txt"
+            },
+            "mask-file": {
+             "mask": "./res/mask_overlap_368x1056.bin"
+            },
+            "yuv-file": {
+             "left": "./res/left_2688x1520.nv12.yuv",
+             "right": "./res/right_2688x1520.nv12.yuv"
+            },
+            "gdc-left": {
+             "internal_start_x": 0,
+             "internal_start_y": 0,
+             "mesh_start_x": 0,
+             "mesh_start_y": 0,
+             "mesh_width": 79,
+             "mesh_height": 63
+            },
+            "gdc-right": {
+             "internal_start_x": 0,
+             "internal_start_y": 0,
+             "mesh_start_x": 0,
+             "mesh_start_y": 0,
+             "mesh_width": 95,
+             "mesh_height": 63
+            },
+            "npu-model": {
+              "type": 5
+            }
+        },
+        {
+          "mode": "top_bottom",
+          "dewarp-top": {
+              "width": 1536,
+              "height": 2816
+          },
+          "dewarp-bottom": {
+              "width": 1536,
+              "height": 3072
+          },
+          "canvas": {
+              "width": 1536,
+              "height": 4350
+          },
+          "overlap": {
+              "width": 1536,
+              "height": 1536
+          },
+          "none-overlap": {
+              "width": 1536,
+              "height": 1536
+          },
+          "map-file": {
+              "top": "./res/left_map_1536x2816.txt",
+              "bottom": "./res/right_map_1536x3072.txt"
+          },
+          "mask-file": {
+              "mask": "./res/right_mask_768x3072.bin"
+          },
+          "yuv-file": {
+              "top": "./res/left_1088x1920.nv12.yuv",
+              "bottom": "./res/right_1088x1920.nv12.yuv"
+          },
+          "gdc-left": {
+            "internal_start_x": 0,
+            "internal_start_y": 0,
+            "mesh_start_x": 0,
+            "mesh_start_y": 0,
+            "mesh_width": 79,
+            "mesh_height": 79
+           },
+           "gdc-right": {
+            "internal_start_x": 0,
+            "internal_start_y": 0,
+            "mesh_start_x": 0,
+            "mesh_start_y": 0,
+            "mesh_width": 95,
+            "mesh_height": 79
+           },
+           "npu-model": {
+             "type": 5
+           }
+        }
+      ]
+    }
+    ]
+}

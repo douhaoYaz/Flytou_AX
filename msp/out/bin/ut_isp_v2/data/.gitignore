@@ -1,0 +1,5 @@
+**/*.o
+**/*.debug
+**/*.so*
+**/.obj*
+# isp/ut_isp_v2/bin/*

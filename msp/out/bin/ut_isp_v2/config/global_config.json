@@ -1,0 +1,12 @@
+{
+	"config": {
+		"ifeBlkCnt":30,
+		"npuBlkCnt":10,
+		"yuvMainBlkCnt":12,
+		"yuvSub1BlkCnt":6,
+		"yuvSub2BlkCnt":6,
+		"intervalTime":21,
+		"snsIniDir":"/opt/etc",
+		"rawDataDir":"/opt/data"
+	}
+}

@@ -1,0 +1,51 @@
+CUR_PATH				:= $(shell pwd)
+HOME_PATH				:= $(CUR_PATH)/../../../../..
+OUT_PATH                := $(HOME_PATH)/msp/out
+BASE_PATH				:= $(HOME_PATH)/msp/component
+LENS_PATH			    := $(BASE_PATH)/isp_proton/lens/
+ROOTFS_TARGET_PATH 		?= $(OUT_PATH)
+
+include $(HOME_PATH)/build/config.mak
+
+# output
+MOD_NAME 		:= lens_dciris
+OUTPUT 			:= .obj
+
+# source
+SRCS 			+=  $(wildcard $(CUR_PATH)/*.c)
+
+OBJS 			:= $(SRCS:%.c=$(OUTPUT)/%.o)
+DEPS			:= $(OBJS:%.o=%.d)
+CINCLUDE		+=  -I$(OUT_PATH)/include \
+					-I$(LENS_PATH)/include
+
+
+# dynamic lib version (must)
+SONAME			:= lib$(MOD_NAME).so
+STRIPPED_TARGET	:= $(SONAME)
+DEBUG_TARGET    := lib$(MOD_NAME).debug
+
+# build flags
+CFLAGS			:= -shared -fPIC
+ifeq ($(debug),yes)
+CFLAGS			+= -Wall -O2 -g
+else
+CFLAGS			+= -Wall -O2
+endif
+CFLAGS			+= -Wno-unused-variable
+CFLAGS			+= -Wno-unused-but-set-variable
+CFLAGS			+= -Wno-unused-function
+CFLAGS			+= -DLINUX
+
+# dependency
+# CLIB			+= -Wl,-rpath=$(TOPDIR)libs
+# CLIB			+= -L$(TOPDIR)../libs
+CLIB    		+= -lpthread
+
+# install
+INSTALL_LIB		:= $(STRIPPED_TARGET) $(DEBUG_TARGET)
+
+# link
+LINK = $(CC)
+
+include $(HOME_PATH)/build/rules.mak

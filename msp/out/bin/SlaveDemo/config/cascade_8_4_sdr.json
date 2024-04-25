@@ -1,0 +1,31 @@
+{
+    "project": "AX620",
+    "version": "1.0",
+
+    "modules": [{
+            "type": "camera",
+            "instance": [
+                {
+                    "id": 0,
+                    "frame_rate": 25,
+                    "sns_type": "0: OS04a10, 1: OS08a20, 2: OS08b10",
+                    "sns_type": 1,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 0
+                },
+                {
+                    "id": 1,
+                    "frame_rate": 25,
+                    "sns_type": "0: OS04a10, 1: OS08a20, 2: OS08b10",
+                    "sns_type": 0,
+                    "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                    "sns_mode": 1,
+                    "run_mode": "0: NPU; 1: None NPU;",
+                    "run_mode": 0
+                }
+            ]
+        }
+    ]
+}

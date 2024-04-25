@@ -1,0 +1,71 @@
+CUR_PATH				:= $(shell pwd)
+HOME_PATH				:= $(CUR_PATH)/../../../../..
+OUT_PATH                := $(HOME_PATH)/msp/out
+BASE_PATH				:= $(HOME_PATH)/msp/component
+SRC_I2C_PATH			:= $(BASE_PATH)/isp_proton/sensor/i2c
+SNS_PATH			    := $(BASE_PATH)/isp_proton/sensor/
+MODEL_PATH				:= $(CUR_PATH)/npu_model
+ROOTFS_TARGET_PATH 		?= $(OUT_PATH)
+COMMON_SRC_PATH			:= $(SNS_PATH)/common/src
+
+include $(HOME_PATH)/build/config.mak
+
+# output
+MOD_NAME 		:= sns_gc4653
+OUTPUT 			:= .obj
+
+ifeq ($(620U_LITTLE_FLASH), TRUE)
+PARAMS_PATH				:= $(CUR_PATH)/params_file/ax620u
+else
+PARAMS_PATH				:= $(CUR_PATH)/params_file/ax620a
+endif
+
+# source
+SRCS 			+= $(wildcard $(SRC_I2C_PATH)/*.c) \
+					$(wildcard $(CUR_PATH)/*.c) \
+					$(wildcard $(COMMON_SRC_PATH)/*.c)
+
+OBJS 			:= $(SRCS:%.c=$(OUTPUT)/%.o)
+DEPS				:= $(OBJS:%.o=%.d)
+CINCLUDE		+=  -I$(SRC_I2C_PATH)/ \
+					-I$(OUT_PATH)/include \
+					-I$(SNS_PATH)/include \
+					-I$(SNS_PATH)/common/include \
+					-I$(PARAMS_PATH)
+
+# dynamic lib version (must)
+SONAME		:= lib$(MOD_NAME).so
+STRIPPED_TARGET	:= $(SONAME)
+DEBUG_TARGET    := lib$(MOD_NAME).debug
+
+# build flags
+CFLAGS			:= -shared -fPIC
+ifeq ($(debug),yes)
+CFLAGS			+= -Wall -O2 -g
+else
+CFLAGS			+= -Wall -O2
+endif
+CFLAGS			+= -Wno-unused-variable
+CFLAGS			+= -Wno-unused-but-set-variable
+CFLAGS			+= -Wno-unused-function
+CFLAGS			+= -DLINUX
+
+# dependency
+# CLIB			+= -Wl,-rpath=$(TOPDIR)libs
+# CLIB			+= -L$(TOPDIR)../libs
+CLIB    		+= -lpthread
+
+# INSTALL_ETC		:= $(CUR_PATH)/*.xml $(CUR_PATH)/awb_params.txt
+
+# install
+INSTALL_LIB		:= $(STRIPPED_TARGET) $(DEBUG_TARGET)
+INSTALL_ETC		:= $(MODEL_PATH)/dummy/*.pro
+#INSTALL_ETC		+= $(MODEL_PATH)/hdr/*.pro
+INSTALL_ETC		+= $(MODEL_PATH)/sdr/*.pro
+INSTALL_ETC		+= $(MODEL_PATH)/pfr/*.pro
+INSTALL_ETC		+= $(CUR_PATH)/params_bin/*.bin
+
+# link
+LINK = $(CC)
+
+include $(HOME_PATH)/build/rules.mak

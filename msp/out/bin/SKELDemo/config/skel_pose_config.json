@@ -1,0 +1,29 @@
+{
+	"detect_models_path": "/opt/etc/skelModels",
+	"detect_algo_type": "skel_pose_algo",
+	"roi": {
+		"enable": "false",
+		"points": [
+			{
+				"x": 0.25,
+				"y": 0.25
+			},
+			{
+				"x": 0.75,
+				"y": 0.75
+			}
+		]
+	},
+	"max_track_size": {
+		"human": 3
+	},
+	"object_filter_size": 1,
+	"object_filter": [
+		{
+			"object_category": "body",
+			"width": 0,
+			"height": 0,
+			"confidence": 0.5
+		}
+	]
+}

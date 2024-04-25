@@ -1,0 +1,123 @@
+{
+    "project": "AX620",
+    "version": "1.0",
+
+    "modules": [{
+            "type": "camera",
+            "instance": [{
+                "id": 0,
+                "frame_rate": 30,
+                "sns_type": "6: GC5603",
+                "sns_type": 6,
+                "sns_mode": "1: AX_SNS_LINEAR_MODE; 2: AX_SNS_HDR_2X_MODE;",
+                "sns_mode": 1,
+                "run_mode": "0: NPU; 1: None NPU;",
+                "run_mode": 0,
+                "tuning_ctrl": "0: disable; 1: enable",
+                "tuning_ctrl": 1,
+                "tuning_port": 8082,
+                "pre_output": "0: AX_PRE_OUTPUT_FULL_MAIN; 1: AX_PRE_OUTPUT_LITE_MAIN; 2: AX_PRE_OUTPUT_BOTH(Beyond FSC)",
+                "pre_output": 0,
+                "sdr_pipe_src": "0: ONLINE; 1: OFFLINE;",
+                "sdr_pipe_src": 1,
+                "hdr_pipe_src": "0: ONLINE; 1: OFFLINE;",
+                "hdr_pipe_src": 0,
+                "depurple_mode": "-1: nochange; 0: depurple off; 1: depurple on",
+                "depurple_mode": -1,
+                "3a_stat_cfg": {
+                    "online_beyond_fsc":
+                        { "eStatMethod": "0:AX_ISP_3A_STAT_METHOD_HARDWARE, 1:AX_ISP_3A_STAT_METHOD_SOFTWARE_CPU, 2:AX_ISP_3A_STAT_METHOD_BOTH",
+                          "eStatMethod": 1,
+                          "eStatFrameType": "0: AX_ISP_3A_STAT_TYPE_LONG_FRAME, 1: AX_ISP_3A_STAT_TYPE_SHORT_FRAME, 2: AX_ISP_3A_STAT_TYPE_LONG_SHORT_REPLACE_FRAME, 3: AX_ISP_3A_STAT_TYPE_MERGED_FRAME, 4: AX_ISP_3A_STAT_TYPE_LONG_AND_SHORT_FRAME",
+                          "eStatFrameType": 4,
+                          "e3AHardwareSrc": "0:AX_ISP_3A_HARDWARE_SRC_IFE_FULL , 1:AX_ISP_3A_HARDWARE_SRC_IFE_LITE , 2:AX_ISP_3A_HARDWARE_SRC_NONE, 3:AX_ISP_3A_HARDWARE_SRC_MAX",
+                          "eAeHardwareSrc": 1,
+                          "eAwbHardwareSrc": 2,
+                          "eAfHardwareSrc": 2
+                        }
+                    }
+            }]
+        },
+        {
+            "type": "venc",
+            "encoder": "h264",
+            "instance": [{
+                    "id": 0,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 4096,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 1,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 4096,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 2,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 4096,
+                    "fps": 30,
+                    "gop": 60
+                },
+                {
+                    "id": 3,
+                    "rc": {
+                        "type": "CBR",
+                        "min_qp": 1,
+                        "max_qp": 51,
+                        "min_iqp": 1,
+                        "max_iqp": 51,
+                        "min_i_prop": 10,
+                        "max_i_prop": 40,
+                        "intra_qp_delta": -2
+                    },
+                    "bitrate": 512,
+                    "fps": 30,
+                    "gop": 60
+                }
+            ]
+        },
+        {
+            "type": "jenc",
+            "instance": [{
+                    "id": 0,
+                    "qplevel": 90
+                },
+                {
+                    "id": 1,
+                    "qplevel": 70
+                }
+            ]
+        }
+    ]
+}
